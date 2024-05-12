@@ -2,14 +2,15 @@ import { useRef, useState } from "react";
 
 import styles from './ModalPage.module.scss'
 
-export function ModalPage({ parent, okClick, cancelClick, children }) {
-    const [isOpen, setIsOpen] = useState(false);
+export function ModalPage({ parent, okClick, cancelClick, open, closeModal, children }) {
     const dialogRef = useRef(null);
 
-    parent.ref = dialogRef;
 
-    const closeModal = function () {
-        dialogRef.current.close();
+    if (open) {
+        dialogRef.current?.showModal();
+    }
+    else {
+        dialogRef.current?.close();
     }
 
     const okClicked = function (e) {

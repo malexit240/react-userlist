@@ -15,7 +15,8 @@ export function UserTable() {
         });
     const [searchField, setSearchField] = useState('');
 
-    const [currentId, setCurrentId] = useState(0);
+    const [currentId, setCurrentId] = useState(1);
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
     let self = {
         ref: {},
@@ -89,8 +90,7 @@ export function UserTable() {
 
     const openUserInfo = function (id) {
         setCurrentId(id);
-        // modalPageRef.current.open();
-        self.ref.current.showModal()
+        setIsModalOpen(true);
     }
 
     return <>
@@ -136,13 +136,13 @@ export function UserTable() {
 
             </table>
 
-            <ModalPage parent={self}>
+            <ModalPage parent={self} open={isModalOpen} closeModal={() => setIsModalOpen(false)}>
 
                 <div>
 
-                    <p>{users.find(u => u.id = currentId).name}</p>
-                    <p>{users.find(u => u.id = currentId).username}</p>
-                    <p>{users.find(u => u.id = currentId).email}</p>
+                    <p>{users.find(u => u.id == currentId)?.name}</p>
+                    <p>{users.find(u => u.id == currentId)?.username}</p>
+                    <p>{users.find(u => u.id == currentId)?.email}</p>
 
                 </div>
 
