@@ -4,38 +4,49 @@ import axios from 'axios';
 import styles from './UserTable.module.scss'
 
 export function UserTable() {
+    //STATES
     const [users, setUsers] = useState([]);
     const [orderState, setOrderState] = useState(
         {
-            fieldName: '',
+            fieldName: undefined,
             isAscending: true,
         });
+    const [searchField, setSearchField] = useState('');
 
+    //EFFECTS
     useEffect(() => {
         loadUsers();
-    }, [orderState]);
+    }, [orderState, searchField]);
 
     async function loadUsers() {
-
         // localStorage.clear();
         if (!localStorage.getItem('users')) {
             const data = await axios.get('https://jsonplaceholder.typicode.com/users');
             localStorage.users = JSON.stringify(data.data);
         }
 
-        setUsers(JSON.parse(localStorage.users));
+        let users = JSON.parse(localStorage.users);
+
+        users = filterUsers(users);
+
+        if (orderState.fieldName != undefined) {
+            users = orderState.isAscending
+                ? users.toSorted((u1, u2) => (+(u1[orderState.fieldName] >= u2[orderState.fieldName]) * 2 - 1))
+                : users.toSorted((u1, u2) => (+(u1[orderState.fieldName] <= u2[orderState.fieldName]) * 2 - 1))
+        }
+
+        setUsers(users);
+    }
+
+    const filterUsers = function (users) {
+        return users.filter(u =>
+            u.email.toLowerCase().includes(searchField)
+            || u.username.toLowerCase().includes(searchField)
+        );
     }
 
     const onSearchFieldTextChanged = function (newValue) {
-        const searchField = newValue.toLowerCase();
-
-        const newUsers = JSON.parse(localStorage.users)
-            .filter(u =>
-                u.email.toLowerCase().includes(searchField)
-                || u.username.toLowerCase().includes(searchField)
-            );
-
-        setUsers(newUsers);
+        setSearchField(newValue.toLowerCase());
     }
 
     const onHeaderClicked = function (fieldName) {
@@ -52,7 +63,6 @@ export function UserTable() {
             fieldName = undefined;
         }
 
-        // console.log(newOrderState);
         setOrderState({
             ...orderState,
             fieldName: fieldName,
@@ -81,10 +91,10 @@ export function UserTable() {
 
         <table className={styles['table']}>
             <tr>
-                <th className={styles['index-field'].attachClass(getOrderingClass('number'))} onClick={() => onHeaderClicked('number')}>#</th>
-                <th className={getOrderingClass('name')} onClick={() => onHeaderClicked('name')}>Name</th>
-                <th className={getOrderingClass('username')} onClick={() => onHeaderClicked('username')}>Username</th>
-                <th className={getOrderingClass('email')} onClick={() => onHeaderClicked('email')}>Email</th>
+                <th className={styles['index-field']}>#</th>
+                <th className={''.attachClasses(styles['orderable'], getOrderingClass('name'))} onClick={() => onHeaderClicked('name')}>Name</th>
+                <th className={''.attachClasses(styles['orderable'], getOrderingClass('username'))} onClick={() => onHeaderClicked('username')}>Username</th>
+                <th className={''.attachClasses(styles['orderable'], getOrderingClass('email'))} onClick={() => onHeaderClicked('email')}>Email</th>
             </tr>
 
             {users.map((u, i) => <tr key={u.id}>

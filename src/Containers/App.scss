@@ -1,4 +1,13 @@
+@use '../Styles/sizes.scss';
+
 .App {
     margin: 0 auto;
-    max-width: 64rem;
+    max-width: sizes.$container-width;
+}
+
+
+@media (width < sizes.$container-width) {
+    .App {
+        padding: 0 sizes.$small;
+    }
 }

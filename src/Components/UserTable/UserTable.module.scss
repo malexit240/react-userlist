@@ -14,7 +14,7 @@
         cursor: pointer;
     }
 
-    th::after {
+    .orderable::after {
         font-family: bootstrap-icons;
         content: "\f14c";
         position: relative;
@@ -23,12 +23,13 @@
         font-size: 1rem;
     }
 
-    th.active-asc::after {
-        content: "\F13A";
+    .orderable.active-asc::after {
+        content: "\f119";
     }
 
-    th.active-desc::after {
-        content: "\f119";
+    .orderable.active-desc::after {
+        
+        content: "\F13A";
     }
 
     td {
