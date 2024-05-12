@@ -7,7 +7,7 @@
 
 .table {
     width: 100%;
-    margin-top: sizes.$medium;
+    margin: sizes.$medium 0;
     text-align: left;
     border-collapse: collapse;
 
@@ -62,8 +62,8 @@
 }
 
 
-@media (width <= sizes.$container-width) {
+@media (width <=sizes.$container-width) {
     .table-container {
-         padding: 0 sizes.$small;
+        padding: 0 sizes.$small;
     }
 }

@@ -97,13 +97,16 @@ export function UserTable() {
         <section className={styles['table-container']} >
 
             <form className={styles['form']}>
+
                 <label htmlFor='search-field'>Search</label>
+
                 <input
                     id='search-field'
                     type='text'
-                    placeholder='type to search...'
+                    placeholder='Type to search...'
                     maxLength='24'
                     onInput={(e) => onSearchFieldTextChanged(e.target.value)}></input>
+
             </form>
 
             <table className={styles['table']}>

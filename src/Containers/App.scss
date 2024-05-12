@@ -1,8 +1,12 @@
 @use '../Styles/sizes.scss';
 
 .App {
+    height: 100%;
     margin: 0 auto;
     max-width: sizes.$container-width;
+
+    display: flex;
+    flex-direction: column;
 }
 
 

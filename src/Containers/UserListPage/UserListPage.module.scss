@@ -3,7 +3,6 @@
 
 .header {
     text-align: center;
-    margin: 0 auto;
     padding: sizes.$small-padding;
     background-color: colors.$brown;
 
@@ -26,7 +25,7 @@
 }
 
 .footer {
-    margin-top: 2rem;
+    margin-top: auto;
     padding: sizes.$medium-padding;
     background-color: colors.$brown;
 
