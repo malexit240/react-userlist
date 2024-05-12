@@ -1,72 +1,36 @@
-# Getting Started with Create React App
+# The most simple project for resume - UserList App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+description for task below
 
-## Available Scripts
+## Task:
+Create a simple application using React that displays a list of users and their details. The application should perform the following functions:
 
-In the project directory, you can run:
+## User List Component:
 
-### `npm start`
+Create a component that displays a list of users.
+The list of users should be fetched from an API, for example, JSONPlaceholder (use the /users endpoint).
+For each user, display their name, email, and phone number.
+## User Details:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+When a user's name is clicked in the list, display more detailed information about that user.
+User details should include: name, email, phone number, address, and company.
+User information should be fetched from the API using the appropriate request.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## User Search:
 
-### `npm test`
+Add the ability to search for users by their name or email.
+Search results should filter the list of users.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Requirements:
+Use React to create the application.
+Adhere to the principles of component-based architecture and break down the application into appropriate components.
+Use modern React practices such as hooks and context.
+For styling the application, you can use CSS or any CSS preprocessor of your choice.
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Bonus Tasks (Optional):
+- Implement sorting of the user list by name or email.
+- Implement pagination for the user list.
 
 
+you can go to [https://malexit240.github.io/](https://malexit240.github.io/)
+or clone repo and run project with default ``` npm start ```
