@@ -1,8 +1,49 @@
-.header {
-    width: fit-content;
-    margin: 0 auto;
+@use '../../Styles/sizes.scss';
+@use '../../Styles/colors.scss';
 
-    p{
-        transform: translate(20%);
+.header {
+    // width: fit-content;
+    text-align: center;
+    margin: 0 auto;
+    padding: sizes.$small-padding;
+    background-color: colors.$brown;
+
+
+    h1 {
+        color: colors.$white;
     }
+
+    p {
+        color: colors.$white;
+        transform: translate(10%);
+    }
+
+    a {
+        color: colors.$green;
+        font-size: 1.5rem;
+    }
+}
+
+.footer {
+    margin-top: 2rem;
+    padding: sizes.$medium-padding;
+    background-color: colors.$brown;
+
+    p,
+    span {
+        color: colors.$white;
+        font-size: 1.2rem;
+        font-weight: 500;
+        display: inline;
+    }
+
+    a {
+        color: colors.$green;
+        font-size: 1.2rem;
+        font-weight: 500;
+    }
+}
+
+.github-link {
+    text-decoration: underline;
 }
