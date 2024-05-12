@@ -20,7 +20,7 @@ export function UserListPage() {
             <br /> <br />
 
             <span>Sure it looks very simple so I hope my code shows more about my possibilities: </span>
-            <a className={styles['github-link']} target='_blank' href='https://github.com/malexit240'>
+            <a className={styles['github-link']} target='_blank' href='https://github.com/malexit240/react-userlist'>
                 github link
             </a>
 

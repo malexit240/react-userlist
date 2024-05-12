@@ -6,6 +6,9 @@
     padding: sizes.$small-padding;
     background-color: colors.$brown;
 
+    transition: border-radius 0.25s;
+    border-radius: 0px 0px 40px 40px;
+
 
     h1 {
         color: colors.$white;
@@ -16,6 +19,8 @@
         color: colors.$white;
         position: relative;
         left: 49%;
+        letter-spacing: 0.0rem;
+        animation: title-start-animation 1s linear 0s;
     }
 
     a {
@@ -24,10 +29,21 @@
     }
 }
 
+@keyframes title-start-animation {
+    from {
+        letter-spacing: -0.35rem;
+        opacity: 0.3;
+        left: 45%;
+    }
+}
+
 .footer {
     margin-top: auto;
     padding: sizes.$medium-padding;
     background-color: colors.$brown;
+
+    transition: border-radius 0.25s;
+    border-radius: 40px 40px 0px 0px;
 
     p,
     span {
@@ -51,4 +67,23 @@
 
 .table-container {
     position: relative;
+}
+
+@media (width <=sizes.$container-width) {
+
+    .header {
+        border-radius: 0px;
+    }
+
+    .footer {
+        padding: sizes.$small sizes.$medium;
+        border-radius: 0px;
+    }
+}
+
+@media (width <=sizes.$mobile-container-width) {
+
+    .footer {
+        padding: sizes.$small;
+    }
 }

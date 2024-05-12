@@ -12,10 +12,11 @@
     border-collapse: collapse;
 
     th {
-        padding: sizes.$small 0;
+        padding: sizes.$small sizes.$tiny;
         font-size: 1.2rem;
         font-weight: 400;
         cursor: pointer;
+        user-select: none;
     }
 
     .orderable::after {
@@ -38,7 +39,7 @@
 
     td {
         border-top: 2px solid colors.$black;
-        padding: sizes.$small 0;
+        padding: sizes.$small sizes.$tiny;
     }
 
     .index-field {
@@ -58,6 +59,12 @@
         padding: sizes.$tiny;
         border-radius: 5px;
         font-size: 1rem;
+        border: 0.15rem solid colors.$black;
+        outline: none;
+    }
+
+    input[type=text]:focus {
+        border: 0.15rem solid colors.$azure;
     }
 }
 
@@ -65,5 +72,14 @@
 @media (width <=sizes.$container-width) {
     .table-container {
         padding: 0 sizes.$small;
+    }
+}
+
+@media (width <=sizes.$mobile-container-width) {
+
+    .table {
+        td {
+            font-size: 0.8rem;
+        }
     }
 }
