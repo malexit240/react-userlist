@@ -1,6 +1,10 @@
 @use '../../Styles/sizes.scss';
 @use '../../Styles/colors.scss';
 
+.table-container {
+    padding: 0;
+}
+
 .table {
     width: 100%;
     margin-top: sizes.$medium;
@@ -19,7 +23,7 @@
         content: "\f14c";
         position: relative;
         left: sizes.$tiny;
-        top: 3px;
+        top: 0.2rem;
         font-size: 1rem;
     }
 
@@ -28,7 +32,7 @@
     }
 
     .orderable.active-desc::after {
-        
+
         content: "\F13A";
     }
 
@@ -54,5 +58,12 @@
         padding: sizes.$tiny;
         border-radius: 5px;
         font-size: 1rem;
+    }
+}
+
+
+@media (width <= sizes.$container-width) {
+    .table-container {
+         padding: 0 sizes.$small;
     }
 }

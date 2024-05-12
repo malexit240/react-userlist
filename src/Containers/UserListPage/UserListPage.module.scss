@@ -2,7 +2,6 @@
 @use '../../Styles/colors.scss';
 
 .header {
-    // width: fit-content;
     text-align: center;
     margin: 0 auto;
     padding: sizes.$small-padding;
@@ -14,8 +13,10 @@
     }
 
     p {
+        width: fit-content;
         color: colors.$white;
-        transform: translate(10%);
+        position: relative;
+        left: 49%;
     }
 
     a {

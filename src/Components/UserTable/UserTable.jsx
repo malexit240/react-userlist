@@ -79,44 +79,48 @@ export function UserTable() {
     }
 
     return <>
-        <form className={styles['form']}>
-            <label htmlFor='search-field'>Search</label>
-            <input
-                id='search-field'
-                type='text'
-                placeholder='type to search...'
-                maxLength='24'
-                onInput={(e) => onSearchFieldTextChanged(e.target.value)}></input>
-        </form>
+        <section className={styles['table-container']}>
 
-        <table className={styles['table']}>
-            <tr>
-                <th className={styles['index-field']}>#</th>
-                <th className={''.attachClasses(styles['orderable'], getOrderingClass('name'))} onClick={() => onHeaderClicked('name')}>Name</th>
-                <th className={''.attachClasses(styles['orderable'], getOrderingClass('username'))} onClick={() => onHeaderClicked('username')}>Username</th>
-                <th className={''.attachClasses(styles['orderable'], getOrderingClass('email'))} onClick={() => onHeaderClicked('email')}>Email</th>
-            </tr>
+            <form className={styles['form']}>
+                <label htmlFor='search-field'>Search</label>
+                <input
+                    id='search-field'
+                    type='text'
+                    placeholder='type to search...'
+                    maxLength='24'
+                    onInput={(e) => onSearchFieldTextChanged(e.target.value)}></input>
+            </form>
 
-            {users.map((u, i) => <tr key={u.id}>
+            <table className={styles['table']}>
+                <tr>
+                    <th className={styles['index-field']}>#</th>
+                    <th className={''.attachClasses(styles['orderable'], getOrderingClass('name'))} onClick={() => onHeaderClicked('name')}>Name</th>
+                    <th className={''.attachClasses(styles['orderable'], getOrderingClass('username'))} onClick={() => onHeaderClicked('username')}>Username</th>
+                    <th className={''.attachClasses(styles['orderable'], getOrderingClass('email'))} onClick={() => onHeaderClicked('email')}>Email</th>
+                </tr>
 
-                <td className={styles['index-field']}>
-                    {i + 1}
-                </td>
+                {users.map((u, i) => <tr key={u.id}>
 
-                <td>
-                    {u.name}
-                </td>
+                    <td className={styles['index-field']}>
+                        {i + 1}
+                    </td>
 
-                <td>
-                    {u.username}
-                </td>
+                    <td>
+                        {u.name}
+                    </td>
 
-                <td>
-                    {u.email}
-                </td>
+                    <td>
+                        {u.username}
+                    </td>
 
-            </tr>)}
+                    <td>
+                        {u.email}
+                    </td>
 
-        </table>
+                </tr>)}
+
+            </table>
+
+        </section>
     </>
 }

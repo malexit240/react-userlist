@@ -6,8 +6,8 @@
 }
 
 
-@media (width < sizes.$container-width) {
-    .App {
-        padding: 0 sizes.$small;
+@media (width <=sizes.$mobile-container-width) {
+    html {
+        font-size: 3vw;
     }
 }
