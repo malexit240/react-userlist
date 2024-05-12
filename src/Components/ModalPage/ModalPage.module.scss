@@ -40,7 +40,10 @@
 
     .cancel-button {
         border: none;
+        outline: none;
         background-color: transparent;
+        width: 2rem;
+        height: 2rem;
     }
 
     .cancel-button::after {

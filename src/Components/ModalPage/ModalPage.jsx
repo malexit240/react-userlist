@@ -2,7 +2,7 @@ import { useRef, useState } from "react";
 
 import styles from './ModalPage.module.scss'
 
-export function ModalPage({ parent, okClick, cancelClick, open, closeModal, children }) {
+export function ModalPage({ title, okClick, cancelClick, open, closeModal, children }) {
     const dialogRef = useRef(null);
 
 
@@ -30,7 +30,7 @@ export function ModalPage({ parent, okClick, cancelClick, open, closeModal, chil
             <header className={styles['header']}>
 
                 <h1>
-                    Title
+                    {title ?? 'Title'}
                 </h1>
 
                 <button onClick={cancelClicked} className={styles['cancel-button']}></button>

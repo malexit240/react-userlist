@@ -1,9 +1,9 @@
-import { useEffect, useState, useRef } from 'react'
+import { useEffect, useState } from 'react'
 import axios from 'axios';
 
 import styles from './UserTable.module.scss'
 
-import { ModalPage } from '../ModalPage/ModalPage'
+import {UserDetailModalPage} from '../../Containers/UserDetailModalPage/UserDetailModalPage'
 
 export function UserTable() {
     //STATES
@@ -14,13 +14,7 @@ export function UserTable() {
             isAscending: true,
         });
     const [searchField, setSearchField] = useState('');
-
-    const [currentId, setCurrentId] = useState(1);
-    const [isModalOpen, setIsModalOpen] = useState(false);
-
-    let self = {
-        ref: {},
-    }
+    const [currentId, setCurrentId] = useState(0);
 
     //EFFECTS
     useEffect(() => {
@@ -90,7 +84,6 @@ export function UserTable() {
 
     const openUserInfo = function (id) {
         setCurrentId(id);
-        setIsModalOpen(true);
     }
 
     return <>
@@ -139,17 +132,10 @@ export function UserTable() {
 
             </table>
 
-            <ModalPage parent={self} open={isModalOpen} closeModal={() => setIsModalOpen(false)}>
-
-                <div>
-
-                    <p>{users.find(u => u.id == currentId)?.name}</p>
-                    <p>{users.find(u => u.id == currentId)?.username}</p>
-                    <p>{users.find(u => u.id == currentId)?.email}</p>
-
-                </div>
-
-            </ModalPage>
+            <UserDetailModalPage
+                opened={currentId > 0}
+                selectedUserForModalPage={users?.find(u => u.id == currentId)}
+                closeModal={() => setCurrentId(0)} />
 
         </section>
     </>
