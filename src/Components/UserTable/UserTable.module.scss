@@ -1,0 +1,57 @@
+@use '../../Styles/sizes.scss';
+@use '../../Styles/colors.scss';
+
+.table {
+    width: 100%;
+    margin-top: sizes.$medium;
+    text-align: left;
+    border-collapse: collapse;
+
+    th {
+        padding: sizes.$small 0;
+        font-size: 1.2rem;
+        font-weight: 400;
+        cursor: pointer;
+    }
+
+    th::after {
+        font-family: bootstrap-icons;
+        content: "\f14c";
+        position: relative;
+        left: sizes.$tiny;
+        top: 3px;
+        font-size: 1rem;
+    }
+
+    th.active-asc::after {
+        content: "\F13A";
+    }
+
+    th.active-desc::after {
+        content: "\f119";
+    }
+
+    td {
+        border-top: 2px solid colors.$black;
+        padding: sizes.$small 0;
+    }
+
+    .index-field {
+        padding: sizes.$small sizes.$tiny;
+        text-align: center;
+    }
+}
+
+.form {
+    label {
+        display: block;
+        padding: sizes.$tiny;
+        font-weight: 500;
+    }
+
+    input {
+        padding: sizes.$tiny;
+        border-radius: 5px;
+        font-size: 1rem;
+    }
+}
