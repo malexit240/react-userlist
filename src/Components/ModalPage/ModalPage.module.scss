@@ -1,0 +1,67 @@
+@use '../../Styles/colors.scss';
+@use '../../Styles/sizes.scss';
+
+.dialog {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: transparent;
+    border: none;
+}
+
+.dialog::backdrop {
+    background-image: linear-gradient(180deg,
+            colors.$gray,
+            colors.$black);
+    opacity: 0.4;
+}
+
+.modal-container {
+    min-width: 24rem;
+    background-color: colors.$white;
+    padding: 0 sizes.$tiny;
+    border-radius: 0.5rem;
+    border: 2px solid colors.$gray;
+}
+
+.header {
+    padding: sizes.$small;
+    border-bottom: 1px solid colors.$gray;
+
+    display: flex;
+    justify-content: space-between;
+
+    h1 {
+        font-size: 1.5rem;
+        font-weight: 400;
+    }
+
+    .cancel-button {
+        border: none;
+        background-color: transparent;
+    }
+
+    .cancel-button::after {
+        font-family: bootstrap-icons;
+        content: "\F659";
+        font-size: 1.5rem;
+        font-weight: 600;
+    }
+}
+
+.content {
+    padding: sizes.$small;
+}
+
+.footer {
+    padding: sizes.$small;
+    border-top: 1px solid colors.$gray;
+    text-align: end;
+
+    button {
+        padding: sizes.$tiny-padding;
+        text-align: center;
+        background-color: colors.$white;
+        border-radius: 5px;
+    }
+}

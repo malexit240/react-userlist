@@ -1,7 +1,9 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import axios from 'axios';
 
 import styles from './UserTable.module.scss'
+
+import { ModalPage } from '../ModalPage/ModalPage'
 
 export function UserTable() {
     //STATES
@@ -12,6 +14,12 @@ export function UserTable() {
             isAscending: true,
         });
     const [searchField, setSearchField] = useState('');
+
+    const [currentId, setCurrentId] = useState(0);
+
+    let self = {
+        ref: {},
+    }
 
     //EFFECTS
     useEffect(() => {
@@ -78,8 +86,15 @@ export function UserTable() {
                 : styles['active-desc']
     }
 
+
+    const openUserInfo = function (id) {
+        setCurrentId(id);
+        // modalPageRef.current.open();
+        self.ref.current.showModal()
+    }
+
     return <>
-        <section className={styles['table-container']}>
+        <section className={styles['table-container']} >
 
             <form className={styles['form']}>
                 <label htmlFor='search-field'>Search</label>
@@ -99,7 +114,7 @@ export function UserTable() {
                     <th className={''.attachClasses(styles['orderable'], getOrderingClass('email'))} onClick={() => onHeaderClicked('email')}>Email</th>
                 </tr>
 
-                {users.map((u, i) => <tr key={u.id}>
+                {users.map((u, i) => <tr onClick={() => openUserInfo(u.id)} key={u.id}>
 
                     <td className={styles['index-field']}>
                         {i + 1}
@@ -120,6 +135,18 @@ export function UserTable() {
                 </tr>)}
 
             </table>
+
+            <ModalPage parent={self}>
+
+                <div>
+
+                    <p>{users.find(u => u.id = currentId).name}</p>
+                    <p>{users.find(u => u.id = currentId).username}</p>
+                    <p>{users.find(u => u.id = currentId).email}</p>
+
+                </div>
+
+            </ModalPage>
 
         </section>
     </>
