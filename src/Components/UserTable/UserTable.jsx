@@ -3,7 +3,9 @@ import axios from 'axios';
 
 import styles from './UserTable.module.scss'
 
-import {UserDetailModalPage} from '../../Containers/UserDetailModalPage/UserDetailModalPage'
+import ModalManager from '../../Helpers/ModalManager/ModalManager';
+import { UserDetailModalPage } from '../../Containers/UserDetailModalPage/UserDetailModalPage'
+
 
 export function UserTable() {
     //STATES
@@ -84,7 +86,13 @@ export function UserTable() {
 
     const openUserInfo = function (id) {
         setCurrentId(id);
+        userDetailModalPage.show();
     }
+
+    var userDetailModalPage = ModalManager(
+        <UserDetailModalPage
+            selectedUserForModalPage={users?.find(u => u.id == currentId)} />
+    );
 
     return <>
         <section className={styles['table-container']} >
@@ -103,39 +111,45 @@ export function UserTable() {
             </form>
 
             <table className={styles['table']}>
-                <tr>
-                    <th className={styles['index-field']}>#</th>
-                    <th className={''.attachClasses(styles['orderable'], getOrderingClass('name'))} onClick={() => onHeaderClicked('name')}>Name</th>
-                    <th className={''.attachClasses(styles['orderable'], getOrderingClass('username'))} onClick={() => onHeaderClicked('username')}>Username</th>
-                    <th className={''.attachClasses(styles['orderable'], getOrderingClass('email'))} onClick={() => onHeaderClicked('email')}>Email</th>
-                </tr>
 
-                {users.map((u, i) => <tr onClick={() => openUserInfo(u.id)} key={u.id}>
+                <thead>
 
-                    <td className={styles['index-field']}>
-                        {i + 1}
-                    </td>
+                    <tr>
+                        <th className={styles['index-field']}>#</th>
+                        <th className={''.attachClasses(styles['orderable'], getOrderingClass('name'))} onClick={() => onHeaderClicked('name')}>Name</th>
+                        <th className={''.attachClasses(styles['orderable'], getOrderingClass('username'))} onClick={() => onHeaderClicked('username')}>Username</th>
+                        <th className={''.attachClasses(styles['orderable'], getOrderingClass('email'))} onClick={() => onHeaderClicked('email')}>Email</th>
+                    </tr>
 
-                    <td>
-                        {u.name}
-                    </td>
+                </thead>
 
-                    <td>
-                        {u.username}
-                    </td>
+                <tbody>
 
-                    <td>
-                        {u.email}
-                    </td>
+                    {users.map((u, i) => <tr onClick={() => openUserInfo(u.id)} key={u.id}>
 
-                </tr>)}
+                        <td className={styles['index-field']}>
+                            {i + 1}
+                        </td>
+
+                        <td>
+                            {u.name}
+                        </td>
+
+                        <td>
+                            {u.username}
+                        </td>
+
+                        <td>
+                            {u.email}
+                        </td>
+
+                    </tr>)}
+
+                </tbody>
 
             </table>
 
-            <UserDetailModalPage
-                opened={currentId > 0}
-                selectedUserForModalPage={users?.find(u => u.id == currentId)}
-                closeModal={() => setCurrentId(0)} />
+            {userDetailModalPage.content}
 
         </section>
     </>

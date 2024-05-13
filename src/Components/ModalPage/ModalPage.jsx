@@ -1,57 +1,45 @@
-import { useRef, useState } from "react";
+import { useContext } from 'react';
+
+import { ModalManagerContext } from '../../Helpers/ModalManager/ModalManager';
 
 import styles from './ModalPage.module.scss'
 
-export function ModalPage({ title, okClick, cancelClick, open, closeModal, children }) {
-    const dialogRef = useRef(null);
+export function ModalPage({ title, okClick, cancelClick, children }) {
+    const manager = useContext(ModalManagerContext)
 
-
-    if (open) {
-        dialogRef.current?.showModal();
-    }
-    else {
-        dialogRef.current?.close();
-    }
-
-    const okClicked = function (e) {
+    const okClicked = function () {
         if (okClick) okClick();
-        closeModal();
+        manager.hide();
     }
 
     const cancelClicked = function () {
         if (cancelClick) cancelClick();
-        closeModal();
+        manager.hide();
     }
 
-    let dialog = <dialog id='call' className={styles['dialog']} ref={dialogRef}>
+    return <section className={styles['modal-container']}>
 
-        <section className={styles['modal-container']}>
+        <header className={styles['header']}>
 
-            <header className={styles['header']}>
+            <h1>
+                {title ?? 'Title'}
+            </h1>
 
-                <h1>
-                    {title ?? 'Title'}
-                </h1>
+            <button onClick={cancelClicked} className={styles['cancel-button']}></button>
 
-                <button onClick={cancelClicked} className={styles['cancel-button']}></button>
+        </header>
 
-            </header>
+        <article className={styles['content']}>
 
-            <article className={styles['content']}>
+            {children}
 
-                {children}
+        </article>
 
-            </article>
+        <footer className={styles['footer']}>
 
-            <footer className={styles['footer']}>
+            <button onClick={e => okClicked(e)}>Ok</button>
 
-                <button onClick={e => okClicked(e)}>Ok</button>
+        </footer>
 
-            </footer>
-
-        </section>
-
-    </dialog>
-
-    return dialog;
+    </section>
 }
